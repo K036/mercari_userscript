@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         スクレイパー案件用テスト
+// @name         メルカリ取引情報をコピーする
 // @namespace    k36.juswork@gmail.com
 // @version      1.0
 // @description  メルカリの取引ページからさまざまな情報をクリップボードにコピーします。
