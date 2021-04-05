@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name         メルカリ取引情報をコピーするα版
+// @name         スクレイパー案件用テスト
 // @namespace    k36.juswork@gmail.com
-// @version      0.1
+// @version      1.0
 // @description  メルカリの取引ページからさまざまな情報をクリップボードにコピーします。
 // @author       K36
 // @match        https://www.mercari.com/jp/transaction/order_status/*
 // @run-at       context-menu
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
-// @updateURL       
+// @updateURL    https://github.com/K036/mercari_userscript/raw/main/scraper.user.js
 // ==/UserScript==
 
 (function(){
@@ -18,7 +18,7 @@
     //商品名と価格を取得
     const title_price = $("body > div.default-container > main > div.l-side > section:nth-child(1) > div > ul > li:nth-child(1) > ul > li > a > div").text();
     //郵便番号を取得する
-    const postal_code = $("body > div.default-container > main > div.l-side > section:nth-child(1) > div > ul > li:nth-child(7) > ul > li > div > p:nth-child(1)").text();
+    const postal_code_pre = $("body > div.default-container > main > div.l-side > section:nth-child(1) > div > ul > li:nth-child(7) > ul > li > div > p:nth-child(1)").text();
     //住所1を取得する
     const address1 = $("body > div.default-container > main > div.l-side > section:nth-child(1) > div > ul > li:nth-child(7) > ul > li > div > p:nth-child(2)").text();
     //住所2を取得する
@@ -30,10 +30,13 @@
 
     ///データを整形
     //商品名と価格を整形
-    const titleSplit = title_price.split(/\s+/g)[1];
-    const priceSplit = title_price.split(/\s+/g)[2];
-    const title = titleSplit.replace(/\n/g,"");
-    const price = priceSplit.replace(/\n/g,"");
+    const titleSplit = title_price.split(/\¥/)[0];
+    const priceSplit = title_price.split(/\¥/)[1];
+    const titleSplit2 = titleSplit.replace(/\s+/g,"")
+    const priceSplit2 = priceSplit.replace(/\s+/g,"")
+    const title = titleSplit2.replace(/\n/g,"");
+    const price = priceSplit2.replace(/\n/g,"");
+    const postal_code = postal_code_pre.replace(/〒/,"");
     //HNを整形
     const hn2 = hn.replace(/\s+/g,"");
     const HN = hn2.replace(/\n/,"")
