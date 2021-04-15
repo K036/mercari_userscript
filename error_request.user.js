@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         エラー報告/リクエスト投稿
+// @name         試作品テスト感想投稿フォーム
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
